@@ -6,7 +6,7 @@ public class PlayerDash : MonoBehaviour
     private Rigidbody RB;
 
     [SerializeField] Transform _camera;
-    [SerializeField] private float DashForce;
+    [SerializeField] private int DashForce;
 
     private bool _isDashing;
 
@@ -18,11 +18,16 @@ public class PlayerDash : MonoBehaviour
     private void Update()
     {
         _isDashing = Input.GetKeyDown(KeyCode.LeftShift);
+
     }
 
     private void FixedUpdate()
     {
-        Dash();
+         if (_isDashing)
+        {
+            Dash();
+            _isDashing = false;
+        }
     }
 
 

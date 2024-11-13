@@ -5,7 +5,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody RB;
 
     [SerializeField] private float moveSpeed;
-    [SerializeField] private float jumpForce;
+    [SerializeField] private float playerJumpForce;
     [SerializeField] private Transform _camera;
 
     private Vector3 input;
@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    
+
 
     private void GetInput()
     {
@@ -52,14 +52,12 @@ public class PlayerMovement : MonoBehaviour
         float mouseX = Input.GetAxisRaw("Mouse X") * sensX * Time.deltaTime;
         float mouseY = Input.GetAxisRaw("Mouse Y") * sensY * Time.deltaTime;
 
-        
-
         yRotation += mouseX;
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        _camera.rotation = Quaternion.Euler(xRotation, yRotation,0);
+        _camera.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         transform.localRotation = Quaternion.Euler(0, yRotation, 0);
     }
 
@@ -69,5 +67,10 @@ public class PlayerMovement : MonoBehaviour
         RB.MovePosition(RB.position + moveDirection);
     }
 
+    private void playerJump()
+    {
+        RB.AddForce(Vector3.up * playerJumpForce * Time.deltaTime);
+        
+    }
 
 }

@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 198385691}
   - component: {fileID: 198385690}
   - component: {fileID: 198385689}
+  - component: {fileID: 198385695}
   - component: {fileID: 198385694}
   m_Layer: 0
   m_Name: Player
@@ -153,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 30
-  jumpForce: 400
+  playerJumpForce: 0
   _camera: {fileID: 956732924}
   sensX: 400
   sensY: 400
@@ -276,6 +277,20 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 120
   m_CollisionDetection: 1
+--- !u!114 &198385695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198385687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6a79dabaf339204e8f68fc051393efe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 956732924}
+  DashForce: 40
 --- !u!1 &905514604
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,7 +561,7 @@ GameObject:
   - component: {fileID: 1240965799}
   - component: {fileID: 1240965798}
   - component: {fileID: 1240965797}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -598,7 +613,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 40fdbd59f7c468f4896e8bea834a1a80, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
