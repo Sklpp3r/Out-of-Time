@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    public int damage = 10;
     public Collider swordCollider;
     void Start()
     {
@@ -21,20 +20,9 @@ public class Attack : MonoBehaviour
         swordCollider.enabled = false;
     }
     
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            EnemyHealth enemy = other.GetComponent<EnemyHealth>();
-            if (enemy != null)
-            {
-                enemy.TakeDamage(damage);
-            }
-        }
-    }
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // Sol tık
+        if (Input.GetMouseButtonDown(0))
         {
             SwingSword();
         }
