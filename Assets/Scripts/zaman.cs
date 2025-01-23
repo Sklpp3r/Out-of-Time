@@ -10,11 +10,16 @@ public class zaman : MonoBehaviour
 
     void Start()
     {
-        StartCountdown();
+        countdownTime = 30f;
     }
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCountdown();
+
+        }
         if (isTimerRunning)
         {
             if (countdownTime > 0)
@@ -33,7 +38,6 @@ public class zaman : MonoBehaviour
     public void StartCountdown()
     {
         isTimerRunning = true;
-        countdownTime = 30f;
     }
 
     private void OnTimeUp()
