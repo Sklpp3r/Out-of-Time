@@ -8,6 +8,7 @@ public class GrapplingGun : MonoBehaviour {
     public Transform gunTip, camera, player;
     private float maxDistance = 100f;
     private SpringJoint joint;
+    
 
     void Awake() {
         lr = GetComponent<LineRenderer>();
@@ -41,7 +42,7 @@ public class GrapplingGun : MonoBehaviour {
             joint.minDistance = distanceFromPoint * 0.25f;
 
             //Adjust these values to fit your game.
-            joint.spring = 4.5f;
+            joint.spring = 100f;
             joint.damper = 7f;
             joint.massScale = 4.5f;
 
