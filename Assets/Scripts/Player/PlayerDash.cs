@@ -1,43 +1,52 @@
-using System.Diagnostics;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDash : MonoBehaviour
+public class Dashing : MonoBehaviour
 {
-    private Rigidbody RB;
+    [Header("References")]
+    public Transform orientation;
+    public Transform playerCam;
+    private Rigidbody rb;
+  
 
-    [SerializeField] Transform _camera;
-    [SerializeField] private int DashForce;
+    [Header("Dashing")]
+    public float dashForce;
+    public float dashUpwardForce;
+    public float dashDuration;
 
-    private bool _isDashing;
+    [Header("Cooldown")]
+    public float dashCd;
+    private float dashCdTimer;
+
+    [Header("Input")]
+    public KeyCode dashKey = KeyCode.E;
 
     private void Start()
     {
-        RB = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
+  
     }
 
     private void Update()
     {
-        _isDashing = Input.GetKeyDown(KeyCode.LeftShift);
-
-    }
-
-    private void FixedUpdate()
-    {
-         if (_isDashing)
-        {
+        if (Input.GetKeyDown(dashKey))
             Dash();
-            _isDashing = false;
-        }
+
+        if (dashCdTimer > 0)
+            dashCdTimer -= Time.deltaTime;
     }
-
-
-
 
     private void Dash()
     {
-        if (_isDashing)
-        {
-            RB.AddForce(_camera.transform.forward * DashForce, ForceMode.Impulse);
-        }
+
+        Vector3 forceToApply = orientation.forward * dashForce + orientation.up * dashUpwardForce;
+        rb.AddForce(forceToApply, ForceMode.Impulse);
+        Invoke(nameof(ResetDash), dashDuration);
+    }
+
+    private void ResetDash()
+    {
+
     }
 }
