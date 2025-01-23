@@ -5,10 +5,10 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody RB;
 
-    [Header("Movement")]
     [SerializeField] private float _playerMoveSpeed;
     [SerializeField] private float _playerJumpForce;
     [SerializeField] private float _playerDashSpeed;
+    public float _airMultiplier;
     [SerializeField] private Transform _camera;
 
 
@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     private float xRotation, yRotation;
     private bool readyToJump;
 
+    Vector3 moveDirection;
+
     private void Awake()
     {
         RB = GetComponent<Rigidbody>();
@@ -35,8 +37,18 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    [System.Obsolete]
     void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            readyToJump = false;
+
+            Jump();
+        }
+
+
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
 
@@ -46,6 +58,8 @@ public class PlayerMovement : MonoBehaviour
         GetInput();
         CamControl();
     }
+
+    
 
 
 
@@ -92,6 +106,8 @@ public class PlayerMovement : MonoBehaviour
 
         RB.AddForce(transform.up * _playerJumpForce, ForceMode.Impulse);
     }
+
+
     private void ResetJump()
     {
         readyToJump = true;

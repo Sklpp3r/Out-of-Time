@@ -154,13 +154,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerMoveSpeed: 40
-  _playerJumpForce: 50
+  _playerJumpForce: 5
   _playerDashSpeed: 10
+  _airMultiplier: 0
   _camera: {fileID: 956732924}
   playerHeight: 0
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 16384
   sensX: 400
   sensY: 400
 --- !u!136 &198385690
@@ -619,7 +620,7 @@ GameObject:
   - component: {fileID: 1240965799}
   - component: {fileID: 1240965798}
   - component: {fileID: 1240965797}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
