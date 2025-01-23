@@ -9,6 +9,7 @@ TagManager:
   - ScreenCamera
   - cockpit_capitalLaser
   - Enemy
+  - Coin
   layers:
   - Default
   - TransparentFX
